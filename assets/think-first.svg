@@ -1,0 +1,131 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 380" width="100%" height="100%">
+  <defs>
+    <linearGradient id="tfBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#090B10"/>
+      <stop offset="60%" stop-color="#0E121A"/>
+      <stop offset="100%" stop-color="#06080B"/>
+    </linearGradient>
+
+    <linearGradient id="tfRed" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#D31427"/>
+      <stop offset="100%" stop-color="#FF334B"/>
+    </linearGradient>
+
+    <linearGradient id="tfGold" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#E2B755"/>
+      <stop offset="100%" stop-color="#C99832"/>
+    </linearGradient>
+
+    <pattern id="tacticalGrid" width="24" height="24" patternUnits="userSpaceOnUse">
+      <path d="M 24 0 L 0 0 0 24" fill="none" stroke="#FFFFFF" stroke-width="0.4" stroke-opacity="0.04"/>
+    </pattern>
+
+    <filter id="boxShadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="8" stdDeviation="12" flood-color="#000000" flood-opacity="0.6"/>
+    </filter>
+
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700;800&amp;family=Plus+Jakarta+Sans:wght@700;800;900&amp;display=swap');
+      .heading { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 800; }
+      .mono { font-family: 'JetBrains Mono', monospace; }
+      
+      @keyframes flowLight {
+        0% { stroke-dashoffset: 120; }
+        100% { stroke-dashoffset: 0; }
+      }
+      .circuit-line {
+        stroke-dasharray: 8 6;
+        animation: flowLight 4s linear infinite;
+      }
+    </style>
+  </defs>
+
+  <!-- Frame Background -->
+  <rect width="1200" height="380" rx="14" fill="url(#tfBg)"/>
+  <rect width="1200" height="380" rx="14" fill="url(#tacticalGrid)"/>
+  <rect x="12" y="12" width="1176" height="356" rx="10" fill="none" stroke="#1D2332" stroke-width="1.2"/>
+
+  <!-- Section Header -->
+  <g transform="translate(44, 48)">
+    <rect x="0" y="0" width="14" height="4" fill="url(#tfRed)"/>
+    <text x="24" y="8" fill="#E2B755" class="mono" font-size="11" font-weight="800" letter-spacing="3">TACTICAL PLAYBOOK // THE FIRST-PRINCIPLES ENGINE</text>
+    <text x="0" y="44" fill="#FFFFFF" class="heading" font-size="28" letter-spacing="-0.5">
+      "Good engineering isn't writing more code. It's making better decisions."
+    </text>
+    <text x="0" y="68" fill="#8C98AD" class="mono" font-size="12">
+      In cricket, you don't swing blindly at every ball. You read the pitch, analyze the field, and execute the right shot.
+    </text>
+  </g>
+
+  <!-- Connecting Vector Line Behind the 4 Pillars -->
+  <line x1="160" y1="230" x2="1040" y2="230" stroke="#D31427" stroke-width="2" opacity="0.3" class="circuit-line"/>
+
+  <!-- 4 Step Playbook Cards -->
+  <!-- STEP 1: READ THE PITCH -->
+  <g transform="translate(44, 150)">
+    <rect width="255" height="180" rx="8" fill="#10141E" stroke="#222A3B" stroke-width="1" filter="url(#boxShadow)"/>
+    <rect x="0" y="0" width="255" height="4" rx="2" fill="url(#tfRed)"/>
+    
+    <g transform="translate(20, 26)">
+      <text x="0" y="0" fill="#E2B755" class="mono" font-size="11" font-weight="800" letter-spacing="2">01 // DIAGNOSE</text>
+      <text x="0" y="24" fill="#FFFFFF" class="heading" font-size="16">Read The Pitch</text>
+      <text x="0" y="46" fill="#7E8B9F" class="mono" font-size="11" line-height="16">
+        <tspan x="0" dy="0">• What is actually the problem?</tspan>
+        <tspan x="0" dy="18">• Why does it exist right now?</tspan>
+        <tspan x="0" dy="18">• What false assumptions exist?</tspan>
+        <tspan x="0" dy="24" fill="#E2B755" font-weight="700">Goal: Isolate Root Truth</tspan>
+      </text>
+    </g>
+  </g>
+
+  <!-- STEP 2: FIELD PLACEMENT -->
+  <g transform="translate(325, 150)">
+    <rect width="255" height="180" rx="8" fill="#10141E" stroke="#222A3B" stroke-width="1" filter="url(#boxShadow)"/>
+    <rect x="0" y="0" width="255" height="4" rx="2" fill="#E2B755"/>
+    
+    <g transform="translate(20, 26)">
+      <text x="0" y="0" fill="#E2B755" class="mono" font-size="11" font-weight="800" letter-spacing="2">02 // STRESS-TEST</text>
+      <text x="0" y="24" fill="#FFFFFF" class="heading" font-size="16">Anticipate Failure</text>
+      <text x="0" y="46" fill="#7E8B9F" class="mono" font-size="11">
+        <tspan x="0" dy="0">• What can possibly break?</tspan>
+        <tspan x="0" dy="18">• How does it behave at 10x?</tspan>
+        <tspan x="0" dy="18">• Where are lock contentions?</tspan>
+        <tspan x="0" dy="24" fill="#E2B755" font-weight="700">Goal: Design Safe Boundaries</tspan>
+      </text>
+    </g>
+  </g>
+
+  <!-- STEP 3: SHOT SELECTION -->
+  <g transform="translate(606, 150)">
+    <rect width="255" height="180" rx="8" fill="#10141E" stroke="#222A3B" stroke-width="1" filter="url(#boxShadow)"/>
+    <rect x="0" y="0" width="255" height="4" rx="2" fill="url(#tfRed)"/>
+    
+    <g transform="translate(20, 26)">
+      <text x="0" y="0" fill="#E2B755" class="mono" font-size="11" font-weight="800" letter-spacing="2">03 // SIMPLIFY</text>
+      <text x="0" y="24" fill="#FFFFFF" class="heading" font-size="16">Select The Shot</text>
+      <text x="0" y="46" fill="#7E8B9F" class="mono" font-size="11">
+        <tspan x="0" dy="0">• Strip accidental complexity</tspan>
+        <tspan x="0" dy="18">• Pick boring, proven tools</tspan>
+        <tspan x="0" dy="18">• Measure trade-offs strictly</tspan>
+        <tspan x="0" dy="24" fill="#E2B755" font-weight="700">Goal: Minimum Complexity</tspan>
+      </text>
+    </g>
+  </g>
+
+  <!-- STEP 4: CLEAN EXECUTION -->
+  <g transform="translate(887, 150)">
+    <rect width="269" height="180" rx="8" fill="#140C12" stroke="#D31427" stroke-width="1.2" filter="url(#boxShadow)"/>
+    <rect x="0" y="0" width="269" height="4" rx="2" fill="url(#tfRed)"/>
+    
+    <g transform="translate(20, 26)">
+      <text x="0" y="0" fill="#FF334B" class="mono" font-size="11" font-weight="800" letter-spacing="2">04 // EXECUTE</text>
+      <text x="0" y="24" fill="#FFFFFF" class="heading" font-size="16">Deliver &amp; Scale</text>
+      <text x="0" y="46" fill="#9CA3AF" class="mono" font-size="11">
+        <tspan x="0" dy="0">• High-performance Java/APIs</tspan>
+        <tspan x="0" dy="18">• Resilient Event-Driven flow</tspan>
+        <tspan x="0" dy="18">• Verify with hard metrics</tspan>
+        <tspan x="0" dy="24" fill="#00E676" font-weight="700">Result: Production Grade</tspan>
+      </text>
+    </g>
+  </g>
+</svg>

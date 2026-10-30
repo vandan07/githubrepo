@@ -1,0 +1,211 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 500" width="100%" height="100%">
+  <defs>
+    <linearGradient id="xiBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#080A0E"/>
+      <stop offset="50%" stop-color="#0F131C"/>
+      <stop offset="100%" stop-color="#07090D"/>
+    </linearGradient>
+
+    <linearGradient id="goldText" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#E2B755"/>
+      <stop offset="100%" stop-color="#FCE59F"/>
+    </linearGradient>
+
+    <linearGradient id="redBadge" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#D31427"/>
+      <stop offset="100%" stop-color="#FF384D"/>
+    </linearGradient>
+
+    <pattern id="dotPattern" width="20" height="20" patternUnits="userSpaceOnUse">
+      <circle cx="10" cy="10" r="0.6" fill="#FFFFFF" fill-opacity="0.05"/>
+    </pattern>
+
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700;800&amp;family=Plus+Jakarta+Sans:wght@700;800;900&amp;display=swap');
+      .heading { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 800; }
+      .mono { font-family: 'JetBrains Mono', monospace; }
+      .tag { font-family: 'JetBrains Mono', monospace; font-size: 10px; font-weight: 700; }
+    </style>
+  </defs>
+
+  <rect width="1200" height="500" rx="14" fill="url(#xiBg)"/>
+  <rect width="1200" height="500" rx="14" fill="url(#dotPattern)"/>
+  <rect x="12" y="12" width="1176" height="476" rx="10" fill="none" stroke="#1F2636" stroke-width="1.2"/>
+
+  <!-- Lineup Header -->
+  <g transform="translate(44, 46)">
+    <text x="0" y="0" fill="#E2B755" class="mono" font-size="11" font-weight="800" letter-spacing="3">TACTICAL SQUAD // MATCH ARSENAL</text>
+    <text x="0" y="32" fill="#FFFFFF" class="heading" font-size="26">The Engineering Playing XI</text>
+    <text x="0" y="54" fill="#8491A5" class="mono" font-size="12">
+      Every tool has a specific role in the middle. Zero bench warmers. Battle-tested under production pressure.
+    </text>
+  </g>
+
+  <!-- COLUMN 1: TOP ORDER (Core Backend & Distributed Architecture) -->
+  <g transform="translate(44, 126)">
+    <rect width="265" height="326" rx="8" fill="#10141F" stroke="#222B3D" stroke-width="1"/>
+    <path d="M 0 0 L 265 0" stroke="url(#redBadge)" stroke-width="4"/>
+    
+    <g transform="translate(18, 24)">
+      <text x="0" y="0" fill="#E2B755" class="mono" font-size="10" font-weight="800" letter-spacing="2">TOP ORDER // THE ANCHORS</text>
+      <text x="0" y="18" fill="#FFFFFF" class="heading" font-size="15">Core Systems &amp; Backend</text>
+      
+      <!-- Player #1 -->
+      <g transform="translate(0, 38)">
+        <rect width="228" height="44" rx="6" fill="#151A27" stroke="#283247" stroke-width="0.8"/>
+        <text x="12" y="26" fill="#E2B755" class="mono" font-size="12" font-weight="800">01</text>
+        <text x="42" y="26" fill="#FFFFFF" class="mono" font-size="12" font-weight="700">Java (OpenJDK / 17/21)</text>
+      </g>
+
+      <!-- Player #2 -->
+      <g transform="translate(0, 90)">
+        <rect width="228" height="44" rx="6" fill="#151A27" stroke="#283247" stroke-width="0.8"/>
+        <text x="12" y="26" fill="#E2B755" class="mono" font-size="12" font-weight="800">02</text>
+        <text x="42" y="26" fill="#FFFFFF" class="mono" font-size="12" font-weight="700">Spring Boot &amp; Ecosystem</text>
+      </g>
+
+      <!-- Player #3 -->
+      <g transform="translate(0, 142)">
+        <rect width="228" height="44" rx="6" fill="#151A27" stroke="#283247" stroke-width="0.8"/>
+        <text x="12" y="26" fill="#E2B755" class="mono" font-size="12" font-weight="800">03</text>
+        <text x="42" y="26" fill="#FFFFFF" class="mono" font-size="12" font-weight="700">Distributed Architecture</text>
+      </g>
+
+      <!-- Sub-attributes -->
+      <g transform="translate(0, 204)">
+        <text x="0" y="0" fill="#717D94" class="mono" font-size="10" font-weight="700">KEY DOMAINS:</text>
+        <text x="0" y="20" fill="#A0AEC0" class="mono" font-size="11" line-height="16">
+          <tspan x="0" dy="0">• JPA / Hibernate ORM</tspan>
+          <tspan x="0" dy="16">• Concurrency &amp; Thread Safety</tspan>
+          <tspan x="0" dy="16">• Scalable REST &amp; API Design</tspan>
+        </text>
+      </g>
+    </g>
+  </g>
+
+  <!-- COLUMN 2: MIDDLE ORDER (Data Tier & In-Memory Engines) -->
+  <g transform="translate(325, 126)">
+    <rect width="265" height="326" rx="8" fill="#10141F" stroke="#222B3D" stroke-width="1"/>
+    <path d="M 0 0 L 265 0" stroke="#E2B755" stroke-width="4"/>
+    
+    <g transform="translate(18, 24)">
+      <text x="0" y="0" fill="#E2B755" class="mono" font-size="10" font-weight="800" letter-spacing="2">MIDDLE ORDER // THE SPINE</text>
+      <text x="0" y="18" fill="#FFFFFF" class="heading" font-size="15">State &amp; Persistence</text>
+      
+      <!-- Player #4 -->
+      <g transform="translate(0, 38)">
+        <rect width="228" height="44" rx="6" fill="#151A27" stroke="#283247" stroke-width="0.8"/>
+        <text x="12" y="26" fill="#E2B755" class="mono" font-size="12" font-weight="800">04</text>
+        <text x="42" y="26" fill="#FFFFFF" class="mono" font-size="12" font-weight="700">PostgreSQL / MySQL</text>
+      </g>
+
+      <!-- Player #5 -->
+      <g transform="translate(0, 90)">
+        <rect width="228" height="44" rx="6" fill="#151A27" stroke="#283247" stroke-width="0.8"/>
+        <text x="12" y="26" fill="#E2B755" class="mono" font-size="12" font-weight="800">05</text>
+        <text x="42" y="26" fill="#FFFFFF" class="mono" font-size="12" font-weight="700">Redis (Cache &amp; Lock)</text>
+      </g>
+
+      <!-- Player #6 -->
+      <g transform="translate(0, 142)">
+        <rect width="228" height="44" rx="6" fill="#151A27" stroke="#283247" stroke-width="0.8"/>
+        <text x="12" y="26" fill="#E2B755" class="mono" font-size="12" font-weight="800">06</text>
+        <text x="42" y="26" fill="#FFFFFF" class="mono" font-size="12" font-weight="700">MongoDB (Doc Store)</text>
+      </g>
+
+      <!-- Sub-attributes -->
+      <g transform="translate(0, 204)">
+        <text x="0" y="0" fill="#717D94" class="mono" font-size="10" font-weight="700">KEY DOMAINS:</text>
+        <text x="0" y="20" fill="#A0AEC0" class="mono" font-size="11">
+          <tspan x="0" dy="0">• Query Plan &amp; Index Tuning</tspan>
+          <tspan x="0" dy="16">• Stampede / Invalidation Defense</tspan>
+          <tspan x="0" dy="16">• ACID &amp; Eventual Consistency</tspan>
+        </text>
+      </g>
+    </g>
+  </g>
+
+  <!-- COLUMN 3: PACE ATTACK (Event Streaming & Infrastructure) -->
+  <g transform="translate(606, 126)">
+    <rect width="265" height="326" rx="8" fill="#10141F" stroke="#222B3D" stroke-width="1"/>
+    <path d="M 0 0 L 265 0" stroke="url(#redBadge)" stroke-width="4"/>
+    
+    <g transform="translate(18, 24)">
+      <text x="0" y="0" fill="#E2B755" class="mono" font-size="10" font-weight="800" letter-spacing="2">PACE ATTACK // HIGH VELOCITY</text>
+      <text x="0" y="18" fill="#FFFFFF" class="heading" font-size="15">Messaging &amp; DevOps</text>
+      
+      <!-- Player #7 -->
+      <g transform="translate(0, 38)">
+        <rect width="228" height="44" rx="6" fill="#151A27" stroke="#283247" stroke-width="0.8"/>
+        <text x="12" y="26" fill="#E2B755" class="mono" font-size="12" font-weight="800">07</text>
+        <text x="42" y="26" fill="#FFFFFF" class="mono" font-size="12" font-weight="700">Apache Kafka</text>
+      </g>
+
+      <!-- Player #8 -->
+      <g transform="translate(0, 90)">
+        <rect width="228" height="44" rx="6" fill="#151A27" stroke="#283247" stroke-width="0.8"/>
+        <text x="12" y="26" fill="#E2B755" class="mono" font-size="12" font-weight="800">08</text>
+        <text x="42" y="26" fill="#FFFFFF" class="mono" font-size="12" font-weight="700">RabbitMQ / Brokers</text>
+      </g>
+
+      <!-- Player #9 & 10 -->
+      <g transform="translate(0, 142)">
+        <rect width="228" height="44" rx="6" fill="#151A27" stroke="#283247" stroke-width="0.8"/>
+        <text x="12" y="26" fill="#E2B755" class="mono" font-size="12" font-weight="800">09-10</text>
+        <text x="60" y="26" fill="#FFFFFF" class="mono" font-size="12" font-weight="700">Docker · AWS · Jenkins</text>
+      </g>
+
+      <!-- Sub-attributes -->
+      <g transform="translate(0, 204)">
+        <text x="0" y="0" fill="#717D94" class="mono" font-size="10" font-weight="700">KEY DOMAINS:</text>
+        <text x="0" y="20" fill="#A0AEC0" class="mono" font-size="11">
+          <tspan x="0" dy="0">• Partition &amp; Consumer Groups</tspan>
+          <tspan x="0" dy="16">• Asynchronous Decoupling</tspan>
+          <tspan x="0" dy="16">• Container CI/CD Automation</tspan>
+        </text>
+      </g>
+    </g>
+  </g>
+
+  <!-- COLUMN 4: THE FINISHER (Generative AI & Modern Edge) -->
+  <g transform="translate(887, 126)">
+    <rect width="269" height="326" rx="8" fill="#140C12" stroke="#D31427" stroke-width="1.2"/>
+    <path d="M 0 0 L 269 0" stroke="url(#redBadge)" stroke-width="4"/>
+    
+    <g transform="translate(18, 24)">
+      <text x="0" y="0" fill="#FF334B" class="mono" font-size="10" font-weight="800" letter-spacing="2">THE FINISHER // MODERN EDGE</text>
+      <text x="0" y="18" fill="#FFFFFF" class="heading" font-size="15">Generative AI &amp; RAG</text>
+      
+      <!-- Player #11 -->
+      <g transform="translate(0, 38)">
+        <rect width="232" height="44" rx="6" fill="#201117" stroke="#4D1923" stroke-width="0.8"/>
+        <text x="12" y="26" fill="#FF334B" class="mono" font-size="12" font-weight="800">11</text>
+        <text x="42" y="26" fill="#FFFFFF" class="mono" font-size="12" font-weight="700">LLM Apps &amp; Architecture</text>
+      </g>
+
+      <!-- Vector Store -->
+      <g transform="translate(0, 90)">
+        <rect width="232" height="44" rx="6" fill="#201117" stroke="#4D1923" stroke-width="0.8"/>
+        <text x="12" y="26" fill="#E2B755" class="mono" font-size="12" font-weight="800">★</text>
+        <text x="42" y="26" fill="#FFFFFF" class="mono" font-size="12" font-weight="700">ChromaDB · Embeddings</text>
+      </g>
+
+      <!-- Local Inference -->
+      <g transform="translate(0, 142)">
+        <rect width="232" height="44" rx="6" fill="#201117" stroke="#4D1923" stroke-width="0.8"/>
+        <text x="12" y="26" fill="#E2B755" class="mono" font-size="12" font-weight="800">★</text>
+        <text x="42" y="26" fill="#FFFFFF" class="mono" font-size="12" font-weight="700">Ollama · Python Tooling</text>
+      </g>
+
+      <!-- Sub-attributes -->
+      <g transform="translate(0, 204)">
+        <text x="0" y="0" fill="#D31427" class="mono" font-size="10" font-weight="700">SPECIALIZED IN:</text>
+        <text x="0" y="20" fill="#CBD5E1" class="mono" font-size="11">
+          <tspan x="0" dy="0">• RAG Chunking &amp; Fusion</tspan>
+          <tspan x="0" dy="16">• Context Window Optimization</tspan>
+          <tspan x="0" dy="16">• Local LLM Orchestration</tspan>
+        </text>
+      </g>
+    </g>
+  </g>
+</svg>

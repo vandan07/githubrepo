@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 320" width="100%" height="100%">
+  <defs>
+    <linearGradient id="pitchNightBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#07090D"/>
+      <stop offset="50%" stop-color="#0E121A"/>
+      <stop offset="100%" stop-color="#050709"/>
+    </linearGradient>
+
+    <linearGradient id="stadiumGrass" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#D31427" stop-opacity="0.8"/>
+      <stop offset="50%" stop-color="#E2B755" stop-opacity="0.9"/>
+      <stop offset="100%" stop-color="#D31427" stop-opacity="0.8"/>
+    </linearGradient>
+
+    <pattern id="isoGrid" width="40" height="20" patternUnits="userSpaceOnUse">
+      <path d="M 0 10 L 20 0 L 40 10 L 20 20 Z" fill="none" stroke="#252F42" stroke-width="0.5" stroke-opacity="0.4"/>
+    </pattern>
+  </defs>
+
+  <rect width="1200" height="320" rx="12" fill="url(#pitchNightBg)"/>
+  <rect width="1200" height="320" rx="12" fill="url(#isoGrid)"/>
+  <rect x="12" y="12" width="1176" height="296" rx="10" fill="none" stroke="#222A3C" stroke-width="1"/>
+
+  <!-- Stadium Pitch Oval -->
+  <ellipse cx="600" cy="180" rx="380" ry="90" fill="none" stroke="url(#stadiumGrass)" stroke-width="1.5" stroke-dasharray="8 6"/>
+  <ellipse cx="600" cy="180" rx="280" ry="60" fill="#0C1018" stroke="#D31427" stroke-width="1" stroke-opacity="0.4"/>
+  <rect x="520" y="155" width="160" height="50" rx="4" fill="#141924" stroke="#E2B755" stroke-width="1"/>
+
+  <!-- Crease Marks -->
+  <line x1="545" y1="155" x2="545" y2="205" stroke="#FFFFFF" stroke-width="1.5" opacity="0.7"/>
+  <line x1="655" y1="155" x2="655" y2="205" stroke="#FFFFFF" stroke-width="1.5" opacity="0.7"/>
+  <circle cx="600" cy="180" r="4" fill="#D31427"/>
+
+  <!-- Text Overlay -->
+  <g text-anchor="middle">
+    <text x="600" y="70" fill="#E2B755" font-family="'JetBrains Mono', monospace" font-size="12" font-weight="800" letter-spacing="3">
+      3D CONTRIBUTION ARENA // NIGHT FIXTURE
+    </text>
+    <text x="600" y="98" fill="#FFFFFF" font-family="'Plus Jakarta Sans', sans-serif" font-size="20" font-weight="800">
+      Every Commit Builds The Match Winning Foundation
+    </text>
+    <text x="600" y="270" fill="#718096" font-family="'JetBrains Mono', monospace" font-size="11">
+      Automated daily via GitHub Actions (.github/workflows/profile-3d.yml) · Ready to compile live data
+    </text>
+  </g>
+</svg>
