@@ -1,0 +1,138 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 480" width="100%" height="100%">
+  <defs>
+    <linearGradient id="wwBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#07090E"/>
+      <stop offset="50%" stop-color="#0E131E"/>
+      <stop offset="100%" stop-color="#06070B"/>
+    </linearGradient>
+
+    <linearGradient id="goldBeam" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#E2B755"/>
+      <stop offset="100%" stop-color="#FCE59F"/>
+    </linearGradient>
+
+    <linearGradient id="redBeam" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#D31427"/>
+      <stop offset="100%" stop-color="#FF384D"/>
+    </linearGradient>
+
+    <pattern id="wwGrid" width="24" height="24" patternUnits="userSpaceOnUse">
+      <circle cx="12" cy="12" r="0.6" fill="#FFFFFF" fill-opacity="0.04"/>
+    </pattern>
+
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700;800&amp;family=Plus+Jakarta+Sans:wght@700;800;900&amp;display=swap');
+      .ww-head { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 800; }
+      .ww-mono { font-family: 'JetBrains Mono', monospace; }
+      
+      @keyframes radarSweep {
+        from { transform: rotate(0deg); }
+        to { transform: rotate(360deg); }
+      }
+      .sweep-line {
+        transform-origin: 320px 255px;
+        animation: radarSweep 14s linear infinite;
+      }
+    </style>
+  </defs>
+
+  <rect width="1200" height="480" rx="16" fill="url(#wwBg)"/>
+  <rect width="1200" height="480" rx="16" fill="url(#wwGrid)"/>
+  <rect x="12" y="12" width="1176" height="456" rx="12" fill="none" stroke="#1F283B" stroke-width="1.2"/>
+
+  <!-- Left Side: Circular Tactical Wagon Wheel -->
+  <g transform="translate(48, 40)">
+    <!-- Boundary Oval -->
+    <ellipse cx="270" cy="215" rx="230" ry="175" fill="#090D15" stroke="#1D2638" stroke-width="1.5"/>
+    <ellipse cx="270" cy="215" rx="170" ry="125" fill="none" stroke="#D31427" stroke-width="1" stroke-dasharray="6 4" opacity="0.3"/>
+    <ellipse cx="270" cy="215" rx="100" ry="70" fill="none" stroke="#E2B755" stroke-width="1" stroke-dasharray="4 4" opacity="0.4"/>
+    <ellipse cx="270" cy="215" rx="30" ry="20" fill="#141A28" stroke="#E2B755" stroke-width="1.2"/>
+
+    <!-- The Pitch Crease in the Center -->
+    <rect x="264" y="200" width="12" height="30" rx="2" fill="#E2B755"/>
+
+    <!-- Shot 1: Straight Down the Ground (Distributed Systems) -->
+    <line x1="270" y1="200" x2="270" y2="45" stroke="url(#redBeam)" stroke-width="2.5"/>
+    <circle cx="270" cy="45" r="5" fill="#D31427"/>
+    <text x="270" y="35" text-anchor="middle" fill="#FFFFFF" class="ww-mono" font-size="10" font-weight="700">DISTRIBUTED ARCHITECTURE (98%)</text>
+
+    <!-- Shot 2: Cover Drive (Java 21 & Concurrency) -->
+    <line x1="264" y1="208" x2="105" y2="95" stroke="url(#goldBeam)" stroke-width="2.5"/>
+    <circle cx="105" cy="95" r="5" fill="#E2B755"/>
+    <text x="75" y="85" text-anchor="middle" fill="#E2B755" class="ww-mono" font-size="10" font-weight="700">JAVA &amp; VIRTUAL THREADS (96%)</text>
+
+    <!-- Shot 3: Mid-Wicket Pull (Kafka Event Ingestion) -->
+    <line x1="276" y1="208" x2="435" y2="95" stroke="url(#redBeam)" stroke-width="2.5"/>
+    <circle cx="435" cy="95" r="5" fill="#D31427"/>
+    <text x="445" y="85" text-anchor="middle" fill="#FF4D61" class="ww-mono" font-size="10" font-weight="700">KAFKA STREAMING (94%)</text>
+
+    <!-- Shot 4: Square Cut (Redis L1/L2 In-Memory) -->
+    <line x1="260" y1="215" x2="55" y2="215" stroke="url(#goldBeam)" stroke-width="2.5"/>
+    <circle cx="55" cy="215" r="5" fill="#E2B755"/>
+    <text x="60" y="235" text-anchor="middle" fill="#CBD5E1" class="ww-mono" font-size="10" font-weight="700">REDIS &amp; CACHE DEFENSE (95%)</text>
+
+    <!-- Shot 5: Powerplay Finish (Generative AI & Hybrid RAG) -->
+    <line x1="280" y1="215" x2="485" y2="215" stroke="url(#redBeam)" stroke-width="2.5"/>
+    <circle cx="485" cy="215" r="5" fill="#D31427"/>
+    <text x="475" y="235" text-anchor="middle" fill="#E2B755" class="ww-mono" font-size="10" font-weight="700">HYBRID RAG &amp; VECTORS (92%)</text>
+
+    <!-- Shot 6: Fine Leg Flick (Database Index & Query Tuning) -->
+    <line x1="276" y1="225" x2="390" y2="350" stroke="url(#goldBeam)" stroke-width="2.5"/>
+    <circle cx="390" cy="350" r="5" fill="#E2B755"/>
+    <text x="390" y="375" text-anchor="middle" fill="#FFFFFF" class="ww-mono" font-size="10" font-weight="700">POSTGRESQL &amp; TUNING (91%)</text>
+
+    <!-- Shot 7: Third Man Deflection (API & Microservices) -->
+    <line x1="264" y1="225" x2="140" y2="340" stroke="url(#redBeam)" stroke-width="2.5"/>
+    <circle cx="140" cy="340" r="5" fill="#D31427"/>
+    <text x="140" y="365" text-anchor="middle" fill="#CBD5E1" class="ww-mono" font-size="10" font-weight="700">REST &amp; MICROSERVICES (95%)</text>
+  </g>
+
+  <!-- Right Side: Shot Breakdown Dossier & Strike Rates -->
+  <g transform="translate(620, 50)">
+    <rect width="180" height="26" rx="4" fill="#1C0E14" stroke="#D31427" stroke-width="1"/>
+    <text x="14" y="17" fill="#FF4D61" class="ww-mono" font-size="10" font-weight="800" letter-spacing="2">TACTICAL WAGON WHEEL</text>
+    <text x="0" y="68" fill="#FFFFFF" class="ww-head" font-size="26">360° Engineering Shot Selection</text>
+    <text x="0" y="90" fill="#718096" class="ww-mono" font-size="12">
+      Every angle covered. From low-level thread synchronization to probabilistic AI retrieval.
+    </text>
+
+    <line x1="0" y1="110" x2="520" y2="110" stroke="#1F283B" stroke-width="1"/>
+
+    <!-- 4 Detailed Metric Rows -->
+    <!-- Row 1 -->
+    <g transform="translate(0, 130)">
+      <rect width="520" height="60" rx="6" fill="#0D111A" stroke="#1E2638" stroke-width="1"/>
+      <text x="16" y="24" fill="#E2B755" class="ww-mono" font-size="11" font-weight="800">STRAIGHT DRIVE // DISTRIBUTED SCALING</text>
+      <text x="16" y="44" fill="#FFFFFF" class="ww-mono" font-size="12">Throughput: 5,400+ req/s · Horizontal Partitions · Zero Bottlenecks</text>
+      <text x="460" y="34" fill="#00E676" class="ww-mono" font-size="14" font-weight="800">98%</text>
+      <path d="M 0 0 L 0 60" stroke="#D31427" stroke-width="3"/>
+    </g>
+
+    <!-- Row 2 -->
+    <g transform="translate(0, 205)">
+      <rect width="520" height="60" rx="6" fill="#0D111A" stroke="#1E2638" stroke-width="1"/>
+      <text x="16" y="24" fill="#E2B755" class="ww-mono" font-size="11" font-weight="800">COVER DRIVE // LOW-LATENCY CONCURRENCY</text>
+      <text x="16" y="44" fill="#FFFFFF" class="ww-mono" font-size="12">p99 Latency: &lt; 42ms · Virtual Threads · Lock-Free CAS Algorithms</text>
+      <text x="460" y="34" fill="#00E676" class="ww-mono" font-size="14" font-weight="800">96%</text>
+      <path d="M 0 0 L 0 60" stroke="#E2B755" stroke-width="3"/>
+    </g>
+
+    <!-- Row 3 -->
+    <g transform="translate(0, 280)">
+      <rect width="520" height="60" rx="6" fill="#0D111A" stroke="#1E2638" stroke-width="1"/>
+      <text x="16" y="24" fill="#FF4D61" class="ww-mono" font-size="11" font-weight="800">POWERPLAY FINISH // GENERATIVE AI &amp; RAG</text>
+      <text x="16" y="44" fill="#FFFFFF" class="ww-mono" font-size="12">Retrieval Speedup: 15s → 0.85s · Reciprocal Rank Fusion · Provenance</text>
+      <text x="460" y="34" fill="#00E676" class="ww-mono" font-size="14" font-weight="800">92%</text>
+      <path d="M 0 0 L 0 60" stroke="#D31427" stroke-width="3"/>
+    </g>
+
+    <!-- Row 4 -->
+    <g transform="translate(0, 355)">
+      <rect width="520" height="60" rx="6" fill="#0D111A" stroke="#1E2638" stroke-width="1"/>
+      <text x="16" y="24" fill="#CBD5E1" class="ww-mono" font-size="11" font-weight="800">SQUARE CUT // IN-MEMORY CACHE &amp; STATE</text>
+      <text x="16" y="44" fill="#FFFFFF" class="ww-mono" font-size="12">Cache Hit Ratio: 98.7% · XFetch Stampede Guard · Redis Cluster</text>
+      <text x="460" y="34" fill="#00E676" class="ww-mono" font-size="14" font-weight="800">95%</text>
+      <path d="M 0 0 L 0 60" stroke="#E2B755" stroke-width="3"/>
+    </g>
+  </g>
+</svg>

@@ -1,0 +1,90 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 380" width="100%" height="100%">
+  <defs>
+    <linearGradient id="termBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#080A0F"/>
+      <stop offset="50%" stop-color="#0B0E16"/>
+      <stop offset="100%" stop-color="#05070A"/>
+    </linearGradient>
+
+    <pattern id="scanlines" width="100%" height="4" patternUnits="userSpaceOnUse">
+      <line x1="0" y1="0" x2="100%" y2="0" stroke="#FFFFFF" stroke-width="0.3" stroke-opacity="0.02"/>
+    </pattern>
+
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700;800&amp;display=swap');
+      .term-font { font-family: 'JetBrains Mono', monospace; font-size: 12.5px; }
+      
+      @keyframes termBlink {
+        0%, 100% { opacity: 1; }
+        50% { opacity: 0; }
+      }
+      .cursor-blink {
+        animation: termBlink 1s step-end infinite;
+      }
+    </style>
+  </defs>
+
+  <!-- Window Container -->
+  <rect width="1200" height="380" rx="12" fill="url(#termBg)" stroke="#1F283B" stroke-width="1.2"/>
+  <rect width="1200" height="380" rx="12" fill="url(#scanlines)"/>
+
+  <!-- Terminal Title Bar -->
+  <rect width="1200" height="42" rx="12" fill="#101522" stroke="#1F283B" stroke-width="1"/>
+  <!-- Traffic Light Dots -->
+  <circle cx="28" cy="21" r="6" fill="#D31427"/>
+  <circle cx="48" cy="21" r="6" fill="#E2B755"/>
+  <circle cx="68" cy="21" r="6" fill="#00E676"/>
+
+  <text x="600" y="26" text-anchor="middle" fill="#8C98AD" font-family="'JetBrains Mono', monospace" font-size="11" font-weight="700" letter-spacing="1.5">
+    vandan@chinnaswamy-engine: ~/production/telemetry (zsh)
+  </text>
+  <rect x="1060" y="12" width="115" height="18" rx="4" fill="#1C0D12" stroke="#D31427" stroke-width="0.8"/>
+  <text x="1117" y="25" text-anchor="middle" fill="#FF4D61" font-family="'JetBrains Mono', monospace" font-size="9" font-weight="800">PROD-CLUSTER</text>
+
+  <!-- Terminal Output Lines -->
+  <g transform="translate(32, 75)" class="term-font">
+    <!-- Command Line -->
+    <text x="0" y="0">
+      <tspan fill="#E2B755" font-weight="700">vandan@engine</tspan><tspan fill="#64748B">:</tspan><tspan fill="#4AA8FF">~/systems</tspan><tspan fill="#FFFFFF">$ ./diagnose-production.sh --target=live --strict</tspan>
+    </text>
+
+    <!-- Diagnostics -->
+    <text x="0" y="28">
+      <tspan fill="#718096">[00:00:01]</tspan> <tspan fill="#E2B755" font-weight="700">INF</tspan> <tspan fill="#CBD5E1">Initializing First-Principles Diagnostic Matrix...</tspan>
+    </text>
+
+    <text x="0" y="54">
+      <tspan fill="#718096">[00:00:02]</tspan> <tspan fill="#00E676" font-weight="700">OK </tspan> <tspan fill="#FFFFFF">JVM Runtime:</tspan> <tspan fill="#4AA8FF">OpenJDK 21.0.4</tspan> <tspan fill="#8C98AD">| Virtual Threads: ENABLED | Carrier Pinning: 0%</tspan>
+    </text>
+
+    <text x="0" y="80">
+      <tspan fill="#718096">[00:00:02]</tspan> <tspan fill="#00E676" font-weight="700">OK </tspan> <tspan fill="#FFFFFF">Event Ingress:</tspan> <tspan fill="#FF4D61">Apache Kafka 3.7</tspan> <tspan fill="#8C98AD">| 3 Partitions (Key: accountId) | Zero Lag</tspan>
+    </text>
+
+    <text x="0" y="106">
+      <tspan fill="#718096">[00:00:03]</tspan> <tspan fill="#00E676" font-weight="700">OK </tspan> <tspan fill="#FFFFFF">In-Memory Cache:</tspan> <tspan fill="#E2B755">Redis 7.2 Cluster</tspan> <tspan fill="#8C98AD">| XFetch Anti-Stampede: ACTIVE | Hit Ratio: 98.7%</tspan>
+    </text>
+
+    <text x="0" y="132">
+      <tspan fill="#718096">[00:00:03]</tspan> <tspan fill="#00E676" font-weight="700">OK </tspan> <tspan fill="#FFFFFF">Data Persistence:</tspan> <tspan fill="#4AA8FF">PostgreSQL 16</tspan> <tspan fill="#8C98AD">| B-Tree Index Health: 100% | Pool Contention: 0%</tspan>
+    </text>
+
+    <text x="0" y="158">
+      <tspan fill="#718096">[00:00:04]</tspan> <tspan fill="#00E676" font-weight="700">OK </tspan> <tspan fill="#FFFFFF">Intelligence Tier:</tspan> <tspan fill="#FF4D61">Hybrid RAG</tspan> <tspan fill="#8C98AD">| ChromaDB + BM25 Fusion (RRF) | Ollama LLM: 0.85s</tspan>
+    </text>
+
+    <!-- Real-Time Metrics Ribbon inside terminal -->
+    <text x="0" y="196" fill="#E2B755" font-weight="700">
+      --- LIVE TELEMETRY: p50: 12ms | p90: 24ms | p99: 38ms | Throughput: 5,420 req/s | CPU: 22% ---
+    </text>
+
+    <!-- Conclusion Status -->
+    <text x="0" y="226">
+      <tspan fill="#00E676" font-weight="800">[RESULT]</tspan> <tspan fill="#FFFFFF" font-weight="700">VERDICT: PRODUCTION HEALTHY · ALL SYSTEMS IN THE MIDDLE · PLAY BOLD</tspan>
+    </text>
+
+    <text x="0" y="256">
+      <tspan fill="#E2B755" font-weight="700">vandan@engine</tspan><tspan fill="#64748B">:</tspan><tspan fill="#4AA8FF">~/systems</tspan><tspan fill="#FFFFFF">$</tspan> <tspan fill="#00E676" class="cursor-blink">█</tspan>
+    </text>
+  </g>
+</svg>

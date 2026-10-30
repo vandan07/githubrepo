@@ -8,12 +8,20 @@
 <br/><br/>
 
 <!-- ═══════════════════════════════════════════════════════════════════ -->
-<!-- ⚡ QUICK MATCH TELEMETRY (CONNECT & BADGES)                         -->
+<!-- ⚡ QUICK MATCH TELEMETRY & CREDENTIAL BADGES                       -->
 <!-- ═══════════════════════════════════════════════════════════════════ -->
 <a href="https://linkedin.com/in/vandan-mahajan"><img src="https://img.shields.io/badge/LinkedIn-D31427?style=for-the-badge&logo=linkedin&logoColor=ffffff&labelColor=0B0D13" alt="LinkedIn"/></a>
 <a href="mailto:vandanmahajan@example.com"><img src="https://img.shields.io/badge/Email-E2B755?style=for-the-badge&logo=gmail&logoColor=0B0D13&labelColor=0B0D13" alt="Email"/></a>
 <a href="https://github.com/vandan-mahajan"><img src="https://img.shields.io/badge/GitHub-D31427?style=for-the-badge&logo=github&logoColor=ffffff&labelColor=0B0D13" alt="GitHub"/></a>
+<a href="#"><img src="https://img.shields.io/badge/Cap_No-01_//_PROD-E2B755?style=for-the-badge&logoColor=0B0D13&labelColor=0B0D13" alt="Cap No"/></a>
 <a href="#"><img src="https://img.shields.io/badge/Base-Bengaluru%2C_IN-0B0D13?style=for-the-badge&logo=googlemaps&logoColor=E2B755&labelColor=171B26" alt="Location"/></a>
+
+<br/><br/>
+
+<!-- ═══════════════════════════════════════════════════════════════════ -->
+<!-- 🪪 PLAYER REGISTRATION CARD & DOSSIER                              -->
+<!-- ═══════════════════════════════════════════════════════════════════ -->
+<img src="./assets/player-card.svg" alt="Player Registration Card" width="100%"/>
 
 <br/><br/>
 
@@ -44,21 +52,65 @@ Before writing a single line of code, my mental compiler runs through this decis
    - What is the actual, unadorned problem?
    - Why does it exist right now?
    - What hidden assumptions are masquerading as requirements?
+   - Can the problem be eliminated rather than solved?
 
 2. The Field (System Boundaries & Risk):
    - Where will this fail when traffic multiplies 10x?
    - Where are the database lock contentions, serialization bottlenecks, and network hops?
    - If this dependency dies at 03:00 AM, how gracefully does the system degrade?
+   - What is the failure blast radius?
 
 3. The Shot (Radical Simplicity):
    - What is the absolute simplest architecture that permanently solves this?
-   - Can we avoid introducing a new distributed component?
+   - Can we solve it with zero new distributed dependencies?
    - Does this solution make sound, practical sense?
+   - Will an engineer joining in 2 years understand this without reading a 40-page wiki?
 
 4. The Delivery (Execution & Measurement):
    - Write clean, idiomatic, test-backed code.
    - Benchmark with real workloads (p99 latency, heap allocation, throughput).
-   - Zero clever hacks; maximum long-term readability.
+   - Zero clever hacks; maximum long-term readability and mechanical sympathy.
+```
+
+<br/>
+
+### ⚖️ Mindset Matrix: Code-First Developer vs. First-Principles Engineer
+
+| Situation | Code-First Instinct | First-Principles Engineering Judgment |
+| :--- | :--- | :--- |
+| **High Latency Spike** | Adds more RAM and spins up 5 more microservice pods. | Profiles thread states, isolates database query plans, and fixes unindexed sequential table scans. |
+| **New Feature Request** | Immediately installs a popular third-party library or framework. | Asks: *“What is the underlying data structure? Can this be solved natively with 30 lines of clean code?”* |
+| **Data Consistency** | Reaches for complex distributed 2PC / Sagas across 6 services. | Re-evaluates domain boundaries to co-locate transactional boundaries within single relational engines. |
+| **Cache Integration** | Uses Redis as a generic key-value dump with random TTLs. | Analyzes cache invalidation patterns, designs probabilistic early expiration (XFetch), and defends against stampedes. |
+| **AI Integration** | Pipes raw, unformatted 50-page PDFs directly into an LLM prompt. | Builds recursive AST-aware chunking with hybrid dense vector + BM25 sparse search and strict provenance citations. |
+
+---
+
+<div align="center">
+  <img src="./assets/match-divider.svg" alt="Seam divider" width="100%"/>
+</div>
+
+## 🔬 THE PITCH REPORT // HOW I DEBUG PRODUCTION INCIDENTS
+
+When production alerts trigger, calm systematic reasoning beats panic every time. Here is the exact triage protocol I follow when diagnosing high-severity systems issues:
+
+```text
+[ALERT: P99 LATENCY SPIKE]
+           │
+           ▼
+[STEP 1: INSPECT INGRESS] ──► Are we experiencing an organic traffic spike or a retry storm?
+           │                  (Check rate-limiting metrics & HTTP 429 backpressure)
+           ▼
+[STEP 2: THREAD & RUNTIME] ──► Are JVM carrier threads pinned? Check GC pause duration & heap saturation.
+           │                  (Run: jcmd <pid> Thread.dump_to_file / check safepoint logs)
+           ▼
+[STEP 3: PERSISTENCE & LOCKS] ──► Inspect active database sessions: lock contention, long-running queries.
+           │                     (Run: SELECT * FROM pg_stat_activity WHERE state != 'idle')
+           ▼
+[STEP 4: ISOLATE & MITIGATE] ──► Deploy circuit breaker trip / fall back to read-only replica cache.
+           │
+           ▼
+[STEP 5: ROOT CAUSE RCA] ──► Fix the underlying constraint permanently. Verify with load benchmark.
 ```
 
 ---
@@ -91,7 +143,7 @@ Every technology in my lineup has earned its place through trial by production. 
       <td>
         <code>Java (17 / 21)</code> <code>Spring Boot</code><br/>
         <code>Spring MVC</code> <code>JPA / Hibernate</code><br/>
-        <code>Virtual Threads</code> <code>Concurrency</code>
+        <code>Virtual Threads (Loom)</code> <code>Concurrency</code>
       </td>
       <td>
         The bedrock anchors. Chosen for strong type safety, memory model predictability, mature concurrency primitives, and massive enterprise throughput.
@@ -120,7 +172,7 @@ Every technology in my lineup has earned its place through trial by production. 
     <tr>
       <td><b>The Finisher<br/>(Generative AI)</b></td>
       <td>
-        <code>LLMs Architecture</code> <code>RAG Pipelines</code><br/>
+        <code>LLMs Architecture</code> <code>Hybrid RAG Pipelines</code><br/>
         <code>ChromaDB</code> <code>Vector Embeddings</code> <code>Ollama</code>
       </td>
       <td>
@@ -145,13 +197,58 @@ Every technology in my lineup has earned its place through trial by production. 
   <img src="./assets/match-divider.svg" alt="Seam divider" width="100%"/>
 </div>
 
-## 🏆 MATCH HIGHLIGHTS // INNINGS BREAKDOWN
+## 📐 THE ENGINE ROOM // RESILIENT DISTRIBUTED TOPOLOGY
 
-Real engineering problems, architectural decisions, and measurable production impact.
+Here is the architectural blueprint of how I design distributed, event-driven backends for mission-critical reliability:
+
+<div align="center">
+  <img src="./assets/system-blueprint.svg" alt="Distributed Architecture Blueprint" width="100%"/>
+</div>
 
 <br/>
 
-### 01. Distributed Transaction & Real-Time Event Ledger Engine
+### ⚙️ Core Architectural Principles Applied:
+1. **Asynchronous Ingress Decoupling:** Client HTTP requests never synchronously mutate downstream database tables under high burst loads. Incoming events are accepted into partitioned Kafka queues within milliseconds.
+2. **Defensive In-Memory Caching:** Redis is paired with the **XFetch probabilistic early recomputation algorithm**, guaranteeing that high-traffic keys never experience sudden expiration stampedes.
+3. **Partitioned Sequential Guarantees:** Kafka messages are keyed by domain entity (e.g., `accountId`, `tenantId`), ensuring strict FIFO ordering per tenant without requiring global distributed locking.
+4. **Resilient Failure Boundaries:** Every cross-service network hop is guarded by Resilience4j circuit breakers and rate limiters with graceful degradation fallbacks.
+
+---
+
+<div align="center">
+  <img src="./assets/match-divider.svg" alt="Seam divider" width="100%"/>
+</div>
+
+## 🎯 THE TACTICAL WAGON WHEEL // 360° COMPETENCY RADAR
+
+In cricket, the wagon wheel visualizes every shot across the field. Here is the engineering translation: full-spectrum capability across the entire distributed systems stack.
+
+<div align="center">
+  <img src="./assets/wagon-wheel.svg" alt="Tactical Wagon Wheel" width="100%"/>
+</div>
+
+<br/>
+
+* **Straight Drive // Distributed Systems (98%):** Horizontal partitioning, event streaming, idempotent consumers, and fault-tolerant topologies under high concurrency.
+* **Cover Drive // Low-Latency Java & Concurrency (96%):** Virtual Threads (Project Loom), lock-free CAS operations, garbage collection tuning, and sub-45ms p99 execution.
+* **Mid-Wicket Pull // Kafka Event Ingestion (94%):** Partitioning strategies, consumer rebalancing mitigation, dead-letter queue architectures, and exactly-once processing semantics.
+* **Square Cut // In-Memory Cache Defense (95%):** Redis cluster orchestration, distributed locks, mutual exclusion buffers, and cache stampede mitigation.
+* **Powerplay Finish // Generative AI & Hybrid RAG (92%):** Recursive AST chunking, reciprocal rank fusion (BM25 + vectors), context window compression, and local LLM deployment.
+* **Fine Leg Flick // Database Index Tuning (91%):** B-Tree & GiST query plan dissection, read-write splitting, connection pool optimization, and isolation level management.
+
+---
+
+<div align="center">
+  <img src="./assets/match-divider.svg" alt="Seam divider" width="100%"/>
+</div>
+
+## 🏆 MATCH HIGHLIGHTS // INNINGS BREAKDOWN
+
+Four deep architectural case studies highlighting real production problems, engineering trade-offs, and measurable outcomes.
+
+<br/>
+
+### 01. Chronos-Ledger // High-Throughput Distributed Event Ingestion Engine
 > **High-Throughput Ingestion Architecture // Core Backend & Messaging**
 
 <details open>
@@ -185,7 +282,7 @@ Real engineering problems, architectural decisions, and measurable production im
 
 ---
 
-### 02. Enterprise Hybrid RAG & Context Intelligence Gateway
+### 02. Vector-Synapse // Enterprise Hybrid RAG & Knowledge Intelligence Gateway
 > **Knowledge Retrieval Pipeline // Generative AI & Vector Search**
 
 <details open>
@@ -216,7 +313,7 @@ Real engineering problems, architectural decisions, and measurable production im
 
 ---
 
-### 03. Apex Distributed Cache & Thundering Herd Defense
+### 03. Apex Distributed Cache // Thundering Herd Defense
 > **Resilient Systems Topology // In-Memory Caching & Concurrency**
 
 <details open>
@@ -225,6 +322,9 @@ Real engineering problems, architectural decisions, and measurable production im
 
 * **The Problem:** In high-concurrency microservices, whenever heavily-accessed cached entities expired simultaneously, thousands of threads immediately missed cache and hammered the downstream database in a classic **Cache Stampede (Thundering Herd)**, causing cascade connection pool starvation.
 * **The Engineering Decision:** Engineered a two-tier caching topology: local in-memory L1 cache backed by a distributed Redis L2 cluster. Combined distributed mutex locks with the **XFetch probabilistic early expiration algorithm** to asynchronously recompute hot cache entries *before* they officially expire.
+* **The Core Algorithm:**
+  $$\Delta t \propto -\beta \cdot \ln(\text{rand}()) \cdot \text{delta}$$
+  *(As a key approaches expiry, worker threads probabilistically schedule background refreshes without blocking incoming reads).*
 * **Measurable Results:**
   - Cache Hit Ratio: **$71.4\% \to 98.7\%$**
   - Database Load Reduction: **$86\%\text{ CPU} \to 18\%\text{ CPU}$** under identical 10,000 QPS load
@@ -235,11 +335,30 @@ Real engineering problems, architectural decisions, and measurable production im
 
 ---
 
+### 04. Aegis-Stream // Distributed Transactional Outbox Engine
+> **Data Consistency Architecture // Distributed Systems & Event Sourcing**
+
+<details open>
+<summary><b>View Tactical Breakdown &amp; Metrics</b></summary>
+<br/>
+
+* **The Problem:** "Dual-write" inconsistencies between relational database commits and message broker publishes caused message loss whenever network partitions occurred after the database commit but before the Kafka produce completed.
+* **The Engineering Decision:** Implemented the **Transactional Outbox Pattern** with zero application-level polling. Mutations write to an outbox table within the same local ACID transaction. An asynchronous CDC pipeline (Change Data Capture via PostgreSQL Write-Ahead Log) streams commits directly to Kafka.
+* **Measurable Results:**
+  - Data Inconsistency Rate: **$100\%$ eliminated (Zero Dual-Write Glitches)**
+  - Application Database Overhead: **$0\text{ polling queries}$** on the primary tables
+  - End-to-End Replication Latency: **$< 85\text{ms}$** from commit to consumer receipt
+* **Stack:** `PostgreSQL WAL` `Apache Kafka` `Java 21` `Spring Boot` `Docker`
+
+</details>
+
+---
+
 <div align="center">
   <img src="./assets/match-divider.svg" alt="Seam divider" width="100%"/>
 </div>
 
-## 📊 LIVE MATCH TELEMETRY // SCOREBOARD
+## 📟 LIVE PRODUCTION TELEMETRY // SCOREBOARD & TERMINAL
 
 <div align="center">
   <img src="./assets/scoreboard.svg" alt="Digital Stadium Scorecard" width="100%"/>
@@ -248,14 +367,34 @@ Real engineering problems, architectural decisions, and measurable production im
 <br/>
 
 <div align="center">
+  <img src="./assets/terminal-hud.svg" alt="Terminal Diagnostic HUD" width="100%"/>
+</div>
+
+<br/>
+
+<div align="center">
 
 ### 🏟️ The 3D Contribution Arena
 
-*Every commit raises another brick in the pavilion — updated automatically every night.*
+*Every commit raises another brick in the pavilion — updated automatically every night via GitHub Actions.*
 
 <img src="./profile-3d-contrib/profile-night-view.svg" alt="3D Contribution Arena" width="100%"/>
 
 </div>
+
+---
+
+<div align="center">
+  <img src="./assets/match-divider.svg" alt="Seam divider" width="100%"/>
+</div>
+
+## ⚖️ ENGINEERING CONVICTIONS // WHAT I STRONGLY BELIEVE
+
+1. **Boring Technology Wins in Production:** A well-tuned relational database with proper indexes, connection pooling, and read-replicas will take you further than 10 premature microservices with distributed consensus overhead.
+2. **First Understand, Then Optimize:** Never guess where a bottleneck is. Profile first, inspect flame graphs, check execution plans, and look at the actual I/O boundaries before changing architecture.
+3. **Most RAG Failures Are Chunking Failures:** Developers blame LLM intelligence when 90% of failures stem from feeding the model chopped-up sentences, stripped context, or unranked noise.
+4. **Resilience Must Be Active, Not Passive:** If a service has no circuit breaker, no rate limiter, and no timeout configured, it isn't an architecture—it’s an outage waiting for a traffic spike.
+5. **Code Is a Liability, Logic Is an Asset:** The best line of code is the one you didn't have to write because you solved the root problem with simpler reasoning.
 
 ---
 
@@ -270,17 +409,34 @@ What I'm actively researching, testing, and building in the engineering nets:
 * 🔬 **Virtual Threads & Structured Concurrency:** Profiling carrier thread pinning, lock contention patterns, and zero-overhead non-blocking I/O in Java 21 / Project Loom.
 * 🤖 **Autonomous Multi-Agent Systems:** Building self-correcting agent loops with deterministic verification harnesses to eliminate LLM hallucinations in system ops.
 * ⚡ **Zero-Copy Serialization:** Benchmarking Protobuf and FlatBuffers over gRPC to minimize garbage collection pauses in distributed event pipelines.
-* 📖 **Reading & Deconstructing:** Designing Data-Intensive Applications (Kleppmann) & Database Internals (Petrov).
+* 📖 **Reading & Deconstructing:** *Designing Data-Intensive Applications* (Kleppmann) & *Database Internals* (Petrov).
+
+---
+
+<div align="center">
+  <img src="./assets/match-divider.svg" alt="Seam divider" width="100%"/>
+</div>
+
+## ⚡ CLI SCOUTING REPORT
+
+Want to view the terminal match report directly? If you clone or inspect this repository, run:
+
+```bash
+python scout-report.py
+```
+
+It compiles an interactive colorized terminal scouting report of my engineering profile, playing metrics, and technical arsenal.
 
 ---
 
 <div align="center">
 
-## 🤝 THE PAVILION // MATCH CREDENTIALS & CONNECT
+<!-- ═══════════════════════════════════════════════════════════════════ -->
+<!-- 🤝 THE PAVILION: END-CAP BANNER & CONNECT                         -->
+<!-- ═══════════════════════════════════════════════════════════════════ -->
+<img src="./assets/connect-banner.svg" alt="The Pavilion Connect Banner" width="100%"/>
 
-*Always open to discuss distributed systems, backend architecture, high-performance Java, or impactful engineering opportunities.*
-
-<br/>
+<br/><br/>
 
 <a href="https://linkedin.com/in/vandan-mahajan"><img src="https://img.shields.io/badge/LinkedIn-D31427?style=for-the-badge&logo=linkedin&logoColor=ffffff&labelColor=0B0D13" alt="LinkedIn"/></a>
 <a href="mailto:vandanmahajan@example.com"><img src="https://img.shields.io/badge/Email-E2B755?style=for-the-badge&logo=gmail&logoColor=0B0D13&labelColor=0B0D13" alt="Email"/></a>

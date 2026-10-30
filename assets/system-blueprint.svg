@@ -1,0 +1,188 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 500" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bpBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#06080C"/>
+      <stop offset="50%" stop-color="#0C1018"/>
+      <stop offset="100%" stop-color="#050709"/>
+    </linearGradient>
+
+    <linearGradient id="lineRed" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#D31427"/>
+      <stop offset="100%" stop-color="#FF3B50"/>
+    </linearGradient>
+
+    <linearGradient id="lineGold" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#E2B755"/>
+      <stop offset="100%" stop-color="#FCE59F"/>
+    </linearGradient>
+
+    <pattern id="bpGrid" width="25" height="25" patternUnits="userSpaceOnUse">
+      <path d="M 25 0 L 0 0 0 25" fill="none" stroke="#222C3E" stroke-width="0.5" stroke-opacity="0.3"/>
+    </pattern>
+
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700;800&amp;family=Plus+Jakarta+Sans:wght@700;800;900&amp;display=swap');
+      .bp-head { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 800; }
+      .bp-mono { font-family: 'JetBrains Mono', monospace; }
+      
+      @keyframes dashFlow {
+        0% { stroke-dashoffset: 100; }
+        100% { stroke-dashoffset: 0; }
+      }
+      .flow-pulse {
+        stroke-dasharray: 6 6;
+        animation: dashFlow 3s linear infinite;
+      }
+    </style>
+  </defs>
+
+  <rect width="1200" height="500" rx="14" fill="url(#bpBg)"/>
+  <rect width="1200" height="500" rx="14" fill="url(#bpGrid)"/>
+  <rect x="12" y="12" width="1176" height="476" rx="10" fill="none" stroke="#1B2232" stroke-width="1.2"/>
+
+  <!-- Blueprint Header -->
+  <g transform="translate(44, 44)">
+    <rect width="14" height="4" fill="#D31427"/>
+    <text x="24" y="8" fill="#E2B755" class="bp-mono" font-size="11" font-weight="800" letter-spacing="3">SYSTEM SCHEMATIC // PRODUCTION TOPOLOGY</text>
+    <text x="0" y="38" fill="#FFFFFF" class="bp-head" font-size="24">The Engine Room: Resilient Distributed Topology</text>
+    <text x="0" y="58" fill="#718096" class="bp-mono" font-size="12">
+      Zero single points of failure. Partitioned event streaming, multi-tier caching, and hybrid vector RAG.
+    </text>
+  </g>
+
+  <!-- ARCHITECTURE FLOW TIERS -->
+  <!-- TIER 1: CLIENT INGRESS & GATEWAY -->
+  <g transform="translate(44, 130)">
+    <rect width="200" height="300" rx="8" fill="#0E121C" stroke="#222B3D" stroke-width="1.2"/>
+    <path d="M 0 0 L 200 0" stroke="#D31427" stroke-width="3"/>
+    
+    <g transform="translate(18, 24)">
+      <text x="0" y="0" fill="#E2B755" class="bp-mono" font-size="10" font-weight="800" letter-spacing="1.5">TIER 01 // INGRESS</text>
+      <text x="0" y="20" fill="#FFFFFF" class="bp-head" font-size="15">API Gateway</text>
+      
+      <!-- Component Card -->
+      <g transform="translate(0, 40)">
+        <rect width="164" height="60" rx="6" fill="#141A28" stroke="#283348" stroke-width="0.8"/>
+        <text x="12" y="24" fill="#FFFFFF" class="bp-mono" font-size="12" font-weight="700">Spring Gateway</text>
+        <text x="12" y="44" fill="#8C98AD" class="bp-mono" font-size="10">Virtual Threads (Loom)</text>
+      </g>
+
+      <g transform="translate(0, 115)">
+        <rect width="164" height="60" rx="6" fill="#141A28" stroke="#283348" stroke-width="0.8"/>
+        <text x="12" y="24" fill="#FFFFFF" class="bp-mono" font-size="12" font-weight="700">Rate Limiter</text>
+        <text x="12" y="44" fill="#8C98AD" class="bp-mono" font-size="10">Token Bucket / Redis</text>
+      </g>
+
+      <g transform="translate(0, 190)">
+        <rect width="164" height="60" rx="6" fill="#141A28" stroke="#283348" stroke-width="0.8"/>
+        <text x="12" y="24" fill="#FFFFFF" class="bp-mono" font-size="12" font-weight="700">Circuit Breaker</text>
+        <text x="12" y="44" fill="#00E676" class="bp-mono" font-size="10">Resilience4j Failover</text>
+      </g>
+    </g>
+  </g>
+
+  <!-- Connectors T1 -> T2 -->
+  <line x1="244" y1="230" x2="284" y2="230" stroke="#D31427" stroke-width="2" class="flow-pulse"/>
+
+  <!-- TIER 2: ASYNC EVENT BROKER -->
+  <g transform="translate(284, 130)">
+    <rect width="210" height="300" rx="8" fill="#0E121C" stroke="#222B3D" stroke-width="1.2"/>
+    <path d="M 0 0 L 210 0" stroke="#E2B755" stroke-width="3"/>
+    
+    <g transform="translate(18, 24)">
+      <text x="0" y="0" fill="#E2B755" class="bp-mono" font-size="10" font-weight="800" letter-spacing="1.5">TIER 02 // MESSAGING</text>
+      <text x="0" y="20" fill="#FFFFFF" class="bp-head" font-size="15">Kafka Streaming</text>
+      
+      <g transform="translate(0, 40)">
+        <rect width="174" height="60" rx="6" fill="#141A28" stroke="#283348" stroke-width="0.8"/>
+        <text x="12" y="24" fill="#FFFFFF" class="bp-mono" font-size="12" font-weight="700">Partitioned Topics</text>
+        <text x="12" y="44" fill="#E2B755" class="bp-mono" font-size="10">Deterministic Keys</text>
+      </g>
+
+      <g transform="translate(0, 115)">
+        <rect width="174" height="60" rx="6" fill="#141A28" stroke="#283348" stroke-width="0.8"/>
+        <text x="12" y="24" fill="#FFFFFF" class="bp-mono" font-size="12" font-weight="700">Consumer Pools</text>
+        <text x="12" y="44" fill="#8C98AD" class="bp-mono" font-size="10">Idempotent Deduplication</text>
+      </g>
+
+      <g transform="translate(0, 190)">
+        <rect width="174" height="60" rx="6" fill="#141A28" stroke="#283348" stroke-width="0.8"/>
+        <text x="12" y="24" fill="#FFFFFF" class="bp-mono" font-size="12" font-weight="700">Dead Letter Queue</text>
+        <text x="12" y="44" fill="#FF4D61" class="bp-mono" font-size="10">Zero Data Loss / Replay</text>
+      </g>
+    </g>
+  </g>
+
+  <!-- Connectors T2 -> T3 -->
+  <line x1="494" y1="230" x2="534" y2="230" stroke="#E2B755" stroke-width="2" class="flow-pulse"/>
+
+  <!-- TIER 3: STATE & CACHE (Redis + Relational) -->
+  <g transform="translate(534, 130)">
+    <rect width="210" height="300" rx="8" fill="#0E121C" stroke="#222B3D" stroke-width="1.2"/>
+    <path d="M 0 0 L 210 0" stroke="#D31427" stroke-width="3"/>
+    
+    <g transform="translate(18, 24)">
+      <text x="0" y="0" fill="#E2B755" class="bp-mono" font-size="10" font-weight="800" letter-spacing="1.5">TIER 03 // STATE ENGINE</text>
+      <text x="0" y="20" fill="#FFFFFF" class="bp-head" font-size="15">Cache &amp; Storage</text>
+      
+      <g transform="translate(0, 40)">
+        <rect width="174" height="60" rx="6" fill="#141A28" stroke="#283348" stroke-width="0.8"/>
+        <text x="12" y="24" fill="#FFFFFF" class="bp-mono" font-size="12" font-weight="700">Redis Cluster L2</text>
+        <text x="12" y="44" fill="#E2B755" class="bp-mono" font-size="10">XFetch Anti-Stampede</text>
+      </g>
+
+      <g transform="translate(0, 115)">
+        <rect width="174" height="60" rx="6" fill="#141A28" stroke="#283348" stroke-width="0.8"/>
+        <text x="12" y="24" fill="#FFFFFF" class="bp-mono" font-size="12" font-weight="700">PostgreSQL Primary</text>
+        <text x="12" y="44" fill="#8C98AD" class="bp-mono" font-size="10">B-Tree / GiST Indexes</text>
+      </g>
+
+      <g transform="translate(0, 190)">
+        <rect width="174" height="60" rx="6" fill="#141A28" stroke="#283348" stroke-width="0.8"/>
+        <text x="12" y="24" fill="#FFFFFF" class="bp-mono" font-size="12" font-weight="700">Read Replica Pool</text>
+        <text x="12" y="44" fill="#00E676" class="bp-mono" font-size="10">Async Replication Lag &lt; 5ms</text>
+      </g>
+    </g>
+  </g>
+
+  <!-- Connectors T3 -> T4 -->
+  <line x1="744" y1="230" x2="784" y2="230" stroke="#D31427" stroke-width="2" class="flow-pulse"/>
+
+  <!-- TIER 4: GENERATIVE AI & HYBRID RAG -->
+  <g transform="translate(784, 130)">
+    <rect width="372" height="300" rx="8" fill="#130C12" stroke="#481824" stroke-width="1.2"/>
+    <path d="M 0 0 L 372 0" stroke="#FF3B50" stroke-width="3"/>
+    
+    <g transform="translate(18, 24)">
+      <text x="0" y="0" fill="#FF4D61" class="bp-mono" font-size="10" font-weight="800" letter-spacing="1.5">TIER 04 // INTELLIGENCE LAYER</text>
+      <text x="0" y="20" fill="#FFFFFF" class="bp-head" font-size="15">Hybrid RAG &amp; Inference Pipeline</text>
+      
+      <!-- Split Row for Hybrid Search -->
+      <g transform="translate(0, 40)">
+        <rect width="162" height="60" rx="6" fill="#1C1118" stroke="#3D1824" stroke-width="0.8"/>
+        <text x="10" y="24" fill="#FFFFFF" class="bp-mono" font-size="11" font-weight="700">ChromaDB</text>
+        <text x="10" y="44" fill="#E2B755" class="bp-mono" font-size="9">Dense Vector Embeddings</text>
+      </g>
+
+      <g transform="translate(174, 40)">
+        <rect width="162" height="60" rx="6" fill="#1C1118" stroke="#3D1824" stroke-width="0.8"/>
+        <text x="10" y="24" fill="#FFFFFF" class="bp-mono" font-size="11" font-weight="700">BM25 Lexical</text>
+        <text x="10" y="44" fill="#E2B755" class="bp-mono" font-size="9">Sparse Inverted Index</text>
+      </g>
+
+      <!-- Reciprocal Rank Fusion Box -->
+      <g transform="translate(0, 115)">
+        <rect width="336" height="60" rx="6" fill="#24121C" stroke="#5C1E2D" stroke-width="1"/>
+        <text x="14" y="24" fill="#FF4D61" class="bp-mono" font-size="12" font-weight="800">Reciprocal Rank Fusion (RRF)</text>
+        <text x="14" y="44" fill="#CBD5E1" class="bp-mono" font-size="10">Re-ranking Top-K Context with Provenance</text>
+      </g>
+
+      <!-- Local LLM -->
+      <g transform="translate(0, 190)">
+        <rect width="336" height="60" rx="6" fill="#1C1118" stroke="#3D1824" stroke-width="0.8"/>
+        <text x="14" y="24" fill="#FFFFFF" class="bp-mono" font-size="12" font-weight="700">Ollama Local LLM Gateway</text>
+        <text x="14" y="44" fill="#00E676" class="bp-mono" font-size="10">Streaming Answer · Strict Zero Hallucination Mode</text>
+      </g>
+    </g>
+  </g>
+</svg>
